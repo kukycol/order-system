@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aplan.mapper.ScoreMapper">
+
+
+
+    <delete id="btcDel">
+        delete from sys_score where score_id IN
+        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="selectScorePage" resultType="com.aplan.bean.model.ScoreModel">
+        select *
+        from sys_score
+        <where>
+            <if test="sp.scoreType != null">
+                and score_type = #{sp.scoreType}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByDepartId" resultType="com.aplan.bean.dto.EmployeeScoreDto">
+        select alias username,user_id
+        from sys_user
+        where user_id != #{userId}
+        and depart_id = #{departId}
+    </select>
+
+    <select id="selectStatus" resultType="java.util.Map">
+        select * from sys_score_activity
+    </select>
+
+    <update id="updateStatus">
+        update sys_score_activity set status = #{status},create_time = #{createTime}
+    </update>
+</mapper>
