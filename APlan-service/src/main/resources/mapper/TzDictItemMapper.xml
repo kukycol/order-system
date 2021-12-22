@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aplan.mapper.TzDictItemMapper">
+
+    <resultMap id="BaseResultMap" type="com.aplan.bean.model.TzDictItemModel">
+        <!--@Table tz_dict_item-->
+        <result property="dictItemId" column="dict_item_id" jdbcType="VARCHAR"/>
+        <result property="dictId" column="dict_id" jdbcType="VARCHAR"/>
+        <result property="dictItemText" column="dict_item_text" jdbcType="VARCHAR"/>
+        <result property="dictItemValue" column="dict_item_value" jdbcType="INTEGER"/>
+        <result property="dictItemRemark" column="dict_item_remark" jdbcType="VARCHAR"/>
+        <result property="dictItemSort" column="dict_item_sort" jdbcType="INTEGER"/>
+        <result property="dictItemStatus" column="dict_item_status" jdbcType="OTHER"/>
+        <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <delete id="btcDel">
+        delete from tz_dict_item where dict_item_id IN
+        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="selectTzDictItemModelPage" resultType="com.aplan.bean.model.TzDictItemModel">
+        select * from tz_dict_item
+        <where>
+            <if test="sp.dictId != null and sp.dictId != ''">
+                and dict_id = #{sp.dictId}
+            </if>
+            <if test="sp.dictItemId != null and sp.dictItemId != ''">
+                and dict_item_id = #{sp.dictItemId}
+            </if>
+            <if test="sp.dictItemText != null and sp.dictItemText != ''">
+                and dict_item_text = #{sp.dictItemText}
+            </if>
+            <if test="sp.dictItemValue != null and sp.dictItemValue != ''">
+                and dict_item_value = #{sp.dictItemValue}
+            </if>
+            <if test="sp.dictItemRemark != null and sp.dictItemRemark != ''">
+                and dict_item_remark = #{sp.dictItemRemark}
+            </if>
+            <if test="sp.dictItemSort != null and sp.dictItemSort != ''">
+                and dict_item_sort = #{sp.dictItemSort}
+            </if>
+            <if test="sp.dictItemStatus != null and sp.dictItemStatus != ''">
+                and dict_item_status = #{sp.dictItemStatus}
+            </if>
+        </where>
+        order by dict_item_value,dict_item_sort
+    </select>
+
+
+</mapper>
