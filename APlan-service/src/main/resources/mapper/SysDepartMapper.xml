@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aplan.mapper.SysDepartMapper">
+
+
+    <select id="selectTree" resultType="com.aplan.bean.dto.SysDepartDto">
+        select
+            *
+        from sys_depart
+        <where>
+            <if test="departName != null and departName != ''">
+                and depart_name like concat('%',#{departName},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="selectParentTree" resultType="com.aplan.bean.dto.SysRuleDto">
+        select
+               depart_id id,
+               depart_name label,
+               parent_id
+        from sys_depart
+        <where>
+            <if test="departName != null and departName != ''">
+                and depart_name like concat('%',#{departName},'%')
+            </if>
+            <if test="departId != null and departId != ''">
+                and depart_id = #{departId}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>
