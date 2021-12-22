@@ -1,0 +1,71 @@
+spring:
+  profiles:
+    active: dev
+  jackson:  # 配置日期格式化
+    date-format: yyyy-MM-dd HH:mm:ss #时间戳统一转换为指定格式
+    time-zone: GMT+8 # 时区修改为东8区
+  quartz:  #springboot 定时器
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: clusteredScheduler
+            instanceId: AUTO
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            tablePrefix: QRTZ_
+            isClustered: true
+            clusterCheckinInterval: 10000
+            useProperties: false
+            misfireThreshold: 12000
+          threadPool: #线程池配置
+            class: org.quartz.simpl.SimpleThreadPool #实现的类名
+            threadCount: 3 #线程数量
+            threadPriority: 5 #线程优先级
+            threadsInheritContextClassLoaderOfInitializingThread: true #自创建父线程
+    job-store-type: jdbc #数据库方式
+server:
+  port: 8986   # 端口
+mybatis-plus: # mybatis-plus配置
+  mapper-locations: classpath*:/mapper/*Mapper.xml  # MyBatis Mapper所对应的XML文件位置
+  global-config:
+    banner: true  # mybatis-plus logo 是否显示
+    db-config:
+      id-type: AUTO  # 主键类型 0:数据库ID自增 1.未定义 2.用户输入 3 id_worker 4.uuid 5.id_worker字符串表示
+      table-underline: true # 默认数据库表下划线命名
+      logic-delete-value: 1 # 默认1是已删除的
+      logic-not-delete-value: 0 # 默认0未删除
+      insert-strategy: not_null  #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+      update-strategy: not_null  #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 控制台打印sql
+  type-handlers-package: com.aplan.mapper.dev # mapper 接口存放的位置
+
+knife4j: # swagger配置
+  basic:
+    enable: false #启用basic权限访问
+    username: test
+    password: 12313
+  setting:
+    enableSwaggerModels: true
+    swaggerModelName: bean
+  doc:
+    title: knife4j-oauth2-demo # 标题
+    description: 测试备注 # 简介
+    termsOfServiceUrl: https://doc.xiaominfo.com # 服务条款网址
+    version: 1.0.0 # 接口文档版本
+    licenseUrl: https://www.apache.org/licenses/LICENSE-2.0 # 许可证网址
+    license: Open Source # 许可证
+    author: Developers # 作者
+    url: https://gitee.com/xiaoym/knife4j # 链接
+    email: 1361441878@qq.com # 邮箱
+  config:
+    tokenUrl: http://localhost:${server.port}/oauth/token # 获取token的接口地址
+    basePackage: com.aplan.controller # controller类的包扫描
+    enable: true #是否开启swagger在线文档
+management: #暴露内置的刷新配置文件url，这个必须写，否则无法刷新配置文件
+  endpoints:
+    web:
+      exposure:
+        include: refresh
