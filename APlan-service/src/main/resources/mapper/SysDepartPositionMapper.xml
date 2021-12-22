@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aplan.mapper.SysDepartPositionMapper">
+
+    <delete id="btcDel" >
+        delete from sys_depart_position where position_id IN
+        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+
+    <select id="selectDepartPositionPage" resultType="com.aplan.bean.dto.DepartPositionDto">
+        select
+        sdp.*,
+        sd.depart_name
+        from sys_depart_position sdp
+        left join sys_depart sd on sd.depart_id = sdp.depart_id
+        <where>
+            <if test="sp.departId != null and sp.departId != ''" >
+                and sdp.depart_id = #{sp.departId}
+            </if>
+            <if test="sp.positionName != null and sp.positionName != ''" >
+                and sdp.position_name like concat('%',#{sp.positionName},'%')
+            </if>
+            <if test="sp.positionStatus != null " >
+                and sdp.position_status = #{sp.positionStatus}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>
