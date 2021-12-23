@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aplan.mapper.SysParamMapper">
+
+
+    <delete id="btcDel">
+        delete from sys_param where id IN
+        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <select id="selectByParamKey" resultType="java.lang.String">
+        select param_value from sys_param where param_key = #{paramKey}
+    </select>
+
+    <select id="selectSysParamPage" resultType="com.aplan.bean.model.SysParamModel">
+        select
+               *
+        from sys_param
+        <where>
+            <if test="sp.paramKey != null and sp.paramKey != ''">
+                and param_key like concat('%',#{sp.paramKey},'%')
+            </if>
+            <if test="sp.paramName != null and sp.paramName != ''">
+                and param_name like concat('%',#{sp.paramName},'%')
+            </if>
+            <if test="sp.isSystem != null">
+                and is_system = #{sp.isSystem}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

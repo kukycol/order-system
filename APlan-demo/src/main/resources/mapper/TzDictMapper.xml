@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aplan.mapper.TzDictMapper">
+
+    <resultMap id="BaseResultMap" type="com.aplan.bean.model.TzDictModel">
+        <!--@Table tz_dict-->
+        <result property="dictId" column="dict_id" jdbcType="VARCHAR"/>
+        <result property="dictName" column="dict_name" jdbcType="VARCHAR"/>
+        <result property="dictCode" column="dict_code" jdbcType="VARCHAR"/>
+        <result property="dictRemark" column="dict_remark" jdbcType="VARCHAR"/>
+        <result property="isSystem" column="is_system" jdbcType="OTHER"/>
+        <result property="dictState" column="dict_state" jdbcType="OTHER"/>
+        <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <!--分页查询-->
+    <select id="selectTzDictModelPage" resultType="com.aplan.bean.model.TzDictModel">
+        select * from tz_dict
+        <where>
+            <if test="sp.isSystem != null">
+                and is_system = #{sp.isSystem}
+            </if>
+            <if test="sp.dictState != null">
+                and dict_state = #{sp.dictState}
+            </if>
+            <if test="sp.dictName != null">
+                and dict_name like concat('%',#{sp.dictName},'%')
+                or dict_code like concat('%',#{sp.dictName},'%')
+            </if>
+            <if test="sp.dictRemark != null">
+                and dict_remark like concat('%',#{sp.dictRemark},'%')
+            </if>
+        </where>
+    </select>
+
+    <!--条件查询-->
+    <select id="selectTzDictModel" resultType="com.aplan.bean.model.TzDictModel">
+        select * from tz_dict
+        <where>
+            <if test="sp.isSystem != null">
+                and is_system = #{sp.isSystem}
+            </if>
+            <if test="sp.dictState != null">
+                and dict_state = #{sp.dictState}
+            </if>
+            <if test="sp.dictName != null">
+                and dict_name = #{sp.dictName}
+            </if>
+            <if test="sp.dictCode != null">
+                and dict_code = #{sp.dictCode}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aplan.mapper.SysLogMapper">
+
+
+    <select id="queryAllByLimit" resultType="com.aplan.bean.model.SysLogModel">
+        select username,
+        operation,
+        `path`,
+        `time`,
+        ip,
+        create_time,
+        `method`,
+        device_name,
+        browser_name from sys_log
+        <where>
+            <if test="sp.username != null and sp.username != ''">
+                and username like concat('%',#{sp.username},'%')
+            </if>
+            <if test="sp.operation != null and sp.operation != ''">
+                and operation like concat('%',#{sp.operation},'%')
+            </if>
+            <if test="sp.path != null and sp.path != ''">
+                and `path` like concat('%',#{sp.path},'%')
+            </if>
+            <if test="sp.method != null and sp.method != ''">
+                and `method` = #{sp.method}
+            </if>
+            <if test="sp.ip != null and sp.ip != ''">
+                and `ip` = #{sp.ip}
+            </if>
+            <if test="sp.startTime != null and sp.endTime != null">
+                and `create_time` between #{sp.startTime} and #{sp.endTime}
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+
+
+    <select id="getUserNewestLogin" resultType="com.aplan.bean.model.SysLogModel">
+        select * from sys_log where user_id = #{userId} order by create_time desc limit 1
+    </select>
+</mapper>
