@@ -38,10 +38,6 @@ public class ImgJsonSerializer extends JsonSerializer<String> {
         // 服务器地址拼接
 //        String fileUrl = "http://" + IPHelper.getInet4Address() + ":" + port + "/";
         String fileUrl = "http://" + IPHelper.getInet4Address() + ":" + port + "/";
-        System.err.println(Inet4Address.getLocalHost());
-        System.err.println(IPHelper.getInet4Address());
-        System.err.println(Inet4Address.getLocalHost().getHostAddress());
-        System.err.println(IPHelper.getInet4Address());
 
         if (StrUtil.isBlank(value)) {
             gen.writeString(StrUtil.EMPTY);
