@@ -1,7 +1,7 @@
 常用的后台管理系统，完成系统基础功能，变成通用系统，拿来就用.
 
 # base-admin
-[部署篇](README-DEPLOY.md)
+[部署篇](README-DEPLOY.md) [解答篇](README-ANSWER.md)
 ## 项目结构
 
 ```
