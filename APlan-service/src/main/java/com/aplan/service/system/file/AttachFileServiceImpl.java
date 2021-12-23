@@ -2,13 +2,13 @@ package com.aplan.service.system.file;
 
 import cn.hutool.core.date.DateUtil;
 import com.aplan.exception.custom.Oauth2Exception;
+import com.aplan.utils.IPHelper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.InetAddress;
 import java.util.Date;
 import java.util.UUID;
 
@@ -48,7 +48,7 @@ public class AttachFileServiceImpl implements AttachFileService {
       // 返回上传文件的访问路径
       String filePath = format + newName;
 
-      String baseUrl = "http://" + InetAddress.getLocalHost().getHostAddress() + ":" + port + "/";
+      String baseUrl = "http://" + IPHelper.getInet4Address() + ":" + port + "/";
 
 
       return baseUrl+filePath;

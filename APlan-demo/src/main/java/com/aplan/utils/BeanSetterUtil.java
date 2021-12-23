@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 /**
  * 切割图片地址中的服务器地址
@@ -44,15 +42,13 @@ public class BeanSetterUtil {
                 if (field.getType().getName().equals("java.lang.String")) {
                     try {
                         String value = (String) field.get(object);
-                        String baseUrl = "http://" + InetAddress.getLocalHost().getHostAddress() + ":" + port + "/";
+                        String baseUrl = "http://" + IPHelper.getInet4Address() + ":" + port + "/";
                         if (value.contains(baseUrl)){
                             value = value.substring(baseUrl.length(),value.length());
                             field.set(object,value);
                         }
 
                     } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    } catch (UnknownHostException e) {
                         e.printStackTrace();
                     }
                 }

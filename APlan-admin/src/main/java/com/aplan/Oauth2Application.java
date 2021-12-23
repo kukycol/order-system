@@ -1,5 +1,6 @@
 package com.aplan;
 
+import com.aplan.utils.IPHelper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +13,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 
-import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 // mybatis-plus 包扫描
@@ -38,13 +38,13 @@ public class Oauth2Application {
                         "----------------------------------------------------------",
                 env.getProperty("spring.application.name"),
                 env.getProperty("server.port"),
-                InetAddress.getLocalHost().getHostAddress(),
+                IPHelper.getInet4Address(),
                 env.getProperty("server.port"),
                 env.getProperty("server.port"),
-                InetAddress.getLocalHost().getHostAddress(),
+                IPHelper.getInet4Address(),
                 env.getProperty("server.port"),
-                InetAddress.getLocalHost().getHostAddress(),
-                InetAddress.getLocalHost().getHostAddress(),
+                IPHelper.getInet4Address(),
+                IPHelper.getInet4Address(),
                 env.getProperty("server.port")
         );
 

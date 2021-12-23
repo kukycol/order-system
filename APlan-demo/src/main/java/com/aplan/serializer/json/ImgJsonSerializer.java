@@ -11,6 +11,7 @@
 package com.aplan.serializer.json;
 
 import cn.hutool.core.util.StrUtil;
+import com.aplan.utils.IPHelper;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
@@ -18,7 +19,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.net.InetAddress;
 
 /**
  * 拼接图片地址
@@ -34,7 +34,7 @@ public class ImgJsonSerializer extends JsonSerializer<String> {
     @Override
     public void serialize(String value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
         // 服务器地址拼接
-        String fileUrl = "http://" + InetAddress.getLocalHost().getHostAddress() + ":" + port + "/";
+        String fileUrl = "http://" + IPHelper.getInet4Address() + ":" + port + "/";
 
         if (StrUtil.isBlank(value)) {
             gen.writeString(StrUtil.EMPTY);
