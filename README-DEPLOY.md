@@ -115,7 +115,7 @@
    [mysql]
    default-character-set=utf8
    
-   #拉去mysql镜像
+   #拉取mysql镜像
    docker pull mysql:8.0.26
    
    #查看是否拉取成功
@@ -145,7 +145,7 @@
 6. docker安装redis
 
    ```
-   #拉去redis镜像
+   #拉取redis镜像
    docker pull redis
    
    #运行并安装
@@ -164,6 +164,8 @@
 
 #运行
 nohup java -jar -Dspring.profiles.active=prod  /opt/project/admin/APlan-admin-1.0.0.jar > /opt/project/admin/admin.log &
+
+#关闭centos防火墙或者放行8986端口
 ```
 
 ###### 部署前端
@@ -194,5 +196,51 @@ nohup java -jar -Dspring.profiles.active=prod  /opt/project/admin/APlan-admin-1.
     
 #切换到安装目录/usr/local/nginx/sbin运行下面的命令重载ng配置
 ./nginx -s reload
+
+#关闭centos防火墙或者放行9527端口
+```
+
+##### centos命令
+
+```
+#防火墙端口放行
+firewall-cmd --zone=public --add-port=8003/tcp --permanent
+
+#放行后重载防火墙配置文件
+firewall-cmd --reload
+
+#查看放行端口列表
+firewall-cmd --list-ports
+
+#查看防火墙状态
+systemctl status firewalld
+
+#查看进程及端口信息
+netstat -tunlp
+```
+
+##### docker命令
+
+```
+#设置docker容器自启动
+docker update --restart=always 容器id/容器名称
+
+#取消docker容器自启动
+docker update --restart=no 容器id/容器名称
+
+#查看本地镜像库
+docker images
+
+#查看正在运行的容器
+docker ps
+
+#查看全部容器
+docker ps -a
+
+#查看容器运行日志
+docker logs 容器id/容器名称
+
+#查看实时容器日志
+docker logs -f 容器id/容器名称
 ```
 
