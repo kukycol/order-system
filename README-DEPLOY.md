@@ -96,7 +96,13 @@
 5. docker安装mysql8.0.26
 
    ```
-   #先创建mysql的配置文件用于挂载的mysql容器中
+   #创建目录
+   mkdir -p /opt/docker_v/mysql/conf
+   
+   #创建文件
+   touch /opt/docker_v/mysql/conf/my.cnf
+   
+   #编辑mysql的配置文件用于挂载的mysql容器中
    vi /opt/docker_v/mysql/conf/my.cnf
    
    #my.cnf内容
