@@ -1,5 +1,6 @@
 package com.aplan.utils;
 
+import lombok.SneakyThrows;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -9,13 +10,14 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.UUID;
 
 /**
  * @Description: 文件转换工具类
  * @Author: kuky
- * @Date: 2021/12/23 15:39        
- * @Version: 0.0.1      
+ * @Date: 2021/12/23 15:39
+ * @Version: 0.0.1
  */
 public class FileUtil {
 
@@ -85,6 +87,48 @@ public class FileUtil {
             e.printStackTrace();
         }
         return multipartFile;
+    }
+
+    /**
+     * @Description:
+     * @Author: kuky
+     * @Date: 2021/12/28 16:33
+     * @param: saveFileName 保存的位置
+     * @param: url 网络图片地址
+     * @param: keyWord 文件名字
+     * @Return void
+     * @Version: 0.0.1
+     */
+    @SneakyThrows
+    public static void downloadImage(String saveFileName, String url, String keyWord, String type) {
+        File file=new File(saveFileName);
+        if(!file.exists()){
+            file.mkdir();
+        }
+        saveFileName=saveFileName+keyWord+"."+type;
+
+        URL url1 = new URL(url);
+        URLConnection uc = url1.openConnection();
+        InputStream inputStream = null;
+        FileOutputStream out = null;
+        try {
+            inputStream = uc.getInputStream();
+            out = new FileOutputStream(saveFileName);
+            int j = 0;
+            while ((j = inputStream.read()) != -1) {
+                out.write(j);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(out!=null){
+                out.close();
+            }
+            if(inputStream!=null) {
+                inputStream.close();
+            }
+        }
+
     }
 
 }
