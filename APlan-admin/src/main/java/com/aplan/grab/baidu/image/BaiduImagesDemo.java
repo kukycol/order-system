@@ -8,10 +8,9 @@ public class BaiduImagesDemo {
         for (int i = 1; i <= threadNumber; i++) {
             int startPage = threadNumber > 1 ? (50 * (i - 1)) + 1 : 1;
             int endPage = i * 50;
-            RunnableDemo r1 = new RunnableDemo(String.valueOf(i),startPage ,endPage) ;
+            BaiduImageRunnable r1 = new BaiduImageRunnable(String.valueOf(i),startPage ,endPage) ;
             r1.start();
         }
-
     }
 
 

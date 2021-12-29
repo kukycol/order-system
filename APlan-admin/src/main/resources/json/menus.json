@@ -1,0 +1,425 @@
+[
+  {
+    "path": "/table",
+    "component": {
+      "name": "Layout",
+      "components": {
+        "AppMain": {
+          "name": "AppMain",
+          "computed": {},
+          "staticRenderFns": [],
+          "_compiled": true,
+          "_scopeId": "data-v-078753dd",
+          "beforeCreate": [
+            null
+          ],
+          "beforeDestroy": [
+            null
+          ],
+          "__file": "src/layout/components/AppMain.vue",
+          "_Ctor": {}
+        },
+        "Navbar": {
+          "components": {
+            "Breadcrumb": {
+              "watch": {},
+              "methods": {},
+              "staticRenderFns": [],
+              "_compiled": true,
+              "_scopeId": "data-v-b50ef614",
+              "beforeCreate": [
+                null
+              ],
+              "beforeDestroy": [
+                null
+              ],
+              "__file": "src/components/Breadcrumb/index.vue",
+              "_Ctor": {}
+            },
+            "Hamburger": {
+              "name": "Hamburger",
+              "props": {
+                "isActive": {
+                  "default": false
+                }
+              },
+              "methods": {},
+              "staticRenderFns": [],
+              "_compiled": true,
+              "_scopeId": "data-v-4e6f274c",
+              "beforeCreate": [
+                null
+              ],
+              "beforeDestroy": [
+                null
+              ],
+              "__file": "src/components/Hamburger/index.vue",
+              "_Ctor": {}
+            },
+            "ErrorLog": {
+              "name": "ErrorLog",
+              "computed": {},
+              "methods": {},
+              "staticRenderFns": [],
+              "_compiled": true,
+              "_scopeId": "data-v-cf51e862",
+              "beforeCreate": [
+                null
+              ],
+              "beforeDestroy": [
+                null
+              ],
+              "__file": "src/components/ErrorLog/index.vue",
+              "_Ctor": {}
+            },
+            "Screenfull": {
+              "name": "Screenfull",
+              "beforeDestroy": [
+                null,
+                null
+              ],
+              "methods": {},
+              "staticRenderFns": [],
+              "_compiled": true,
+              "_scopeId": "data-v-29234bee",
+              "beforeCreate": [
+                null
+              ],
+              "__file": "src/components/Screenfull/index.vue",
+              "_Ctor": {}
+            },
+            "SizeSelect": {
+              "computed": {},
+              "methods": {},
+              "staticRenderFns": [],
+              "_compiled": true,
+              "beforeCreate": [
+                null
+              ],
+              "beforeDestroy": [
+                null
+              ],
+              "__file": "src/components/SizeSelect/index.vue",
+              "_Ctor": {}
+            },
+            "Search": {
+              "name": "HeaderSearch",
+              "computed": {},
+              "watch": {},
+              "methods": {},
+              "staticRenderFns": [],
+              "_compiled": true,
+              "_scopeId": "data-v-032bd1f0",
+              "beforeCreate": [
+                null
+              ],
+              "beforeDestroy": [
+                null
+              ],
+              "__file": "src/components/HeaderSearch/index.vue",
+              "_Ctor": {}
+            }
+          },
+          "computed": {},
+          "methods": {},
+          "staticRenderFns": [],
+          "_compiled": true,
+          "_scopeId": "data-v-d16d6306",
+          "beforeCreate": [
+            null
+          ],
+          "beforeDestroy": [
+            null
+          ],
+          "__file": "src/layout/components/Navbar.vue",
+          "_Ctor": {}
+        },
+        "RightPanel": {
+          "name": "RightPanel",
+          "props": {
+            "clickNotClose": {
+              "default": false
+            },
+            "buttonTop": {
+              "default": 250
+            }
+          },
+          "computed": {},
+          "watch": {},
+          "beforeDestroy": [
+            null,
+            null
+          ],
+          "methods": {},
+          "staticRenderFns": [],
+          "_compiled": true,
+          "_scopeId": "data-v-1e488bfb",
+          "beforeCreate": [
+            null
+          ],
+          "__file": "src/components/RightPanel/index.vue",
+          "_Ctor": {}
+        },
+        "Settings": {
+          "components": {
+            "ThemePicker": {
+              "computed": {},
+              "watch": {
+                "defaultTheme": {
+                  "immediate": true,
+                  "user": true
+                }
+              },
+              "methods": {},
+              "staticRenderFns": [],
+              "_compiled": true,
+              "beforeCreate": [
+                null
+              ],
+              "beforeDestroy": [
+                null
+              ],
+              "__file": "src/components/ThemePicker/index.vue",
+              "_Ctor": {}
+            }
+          },
+          "computed": {
+            "fixedHeader": {},
+            "tagsView": {},
+            "sidebarLogo": {}
+          },
+          "methods": {},
+          "staticRenderFns": [],
+          "_compiled": true,
+          "_scopeId": "data-v-126b135a",
+          "beforeCreate": [
+            null
+          ],
+          "beforeDestroy": [
+            null
+          ],
+          "__file": "src/layout/components/Settings/index.vue",
+          "_Ctor": {}
+        },
+        "Sidebar": {
+          "components": {
+            "SidebarItem": {
+              "name": "SidebarItem",
+              "components": {
+                "Item": {
+                  "name": "MenuItem",
+                  "functional": true,
+                  "props": {
+                    "icon": {
+                      "default": ""
+                    },
+                    "title": {
+                      "default": ""
+                    }
+                  },
+                  "_scopeId": "data-v-31ea41b3",
+                  "__file": "src/layout/components/Sidebar/Item.vue",
+                  "_Ctor": {}
+                },
+                "AppLink": {
+                  "props": {
+                    "to": {
+                      "required": true
+                    }
+                  },
+                  "computed": {},
+                  "methods": {},
+                  "staticRenderFns": [],
+                  "_compiled": true,
+                  "beforeCreate": [
+                    null
+                  ],
+                  "beforeDestroy": [
+                    null
+                  ],
+                  "__file": "src/layout/components/Sidebar/Link.vue",
+                  "_Ctor": {}
+                }
+              },
+              "mixins": [
+                {
+                  "computed": {},
+                  "methods": {}
+                }
+              ],
+              "props": {
+                "item": {
+                  "required": true
+                },
+                "isNest": {
+                  "default": false
+                },
+                "basePath": {
+                  "default": ""
+                }
+              },
+              "methods": {},
+              "staticRenderFns": [],
+              "_compiled": true,
+              "beforeCreate": [
+                null
+              ],
+              "beforeDestroy": [
+                null
+              ],
+              "__file": "src/layout/components/Sidebar/SidebarItem.vue",
+              "_Ctor": {}
+            },
+            "Logo": {
+              "name": "SidebarLogo",
+              "props": {
+                "collapse": {
+                  "required": true
+                }
+              },
+              "staticRenderFns": [],
+              "_compiled": true,
+              "_scopeId": "data-v-6494804b",
+              "beforeCreate": [
+                null
+              ],
+              "beforeDestroy": [
+                null
+              ],
+              "__file": "src/layout/components/Sidebar/Logo.vue"
+            }
+          },
+          "computed": {},
+          "staticRenderFns": [],
+          "_compiled": true,
+          "beforeCreate": [
+            null
+          ],
+          "beforeDestroy": [
+            null
+          ],
+          "__file": "src/layout/components/Sidebar/index.vue",
+          "_Ctor": {}
+        },
+        "TagsView": {
+          "components": {
+            "ScrollPane": {
+              "name": "ScrollPane",
+              "computed": {},
+              "beforeDestroy": [
+                null,
+                null
+              ],
+              "methods": {},
+              "staticRenderFns": [],
+              "_compiled": true,
+              "_scopeId": "data-v-be6b7bae",
+              "beforeCreate": [
+                null
+              ],
+              "__file": "src/layout/components/TagsView/ScrollPane.vue",
+              "_Ctor": {}
+            }
+          },
+          "computed": {},
+          "watch": {},
+          "methods": {},
+          "staticRenderFns": [],
+          "_compiled": true,
+          "_scopeId": "data-v-fac8ca64",
+          "beforeCreate": [
+            null
+          ],
+          "beforeDestroy": [
+            null
+          ],
+          "__file": "src/layout/components/TagsView/index.vue",
+          "_Ctor": {}
+        }
+      },
+      "mixins": [
+        {
+          "watch": {},
+          "methods": {}
+        }
+      ],
+      "computed": {},
+      "methods": {},
+      "staticRenderFns": [],
+      "_compiled": true,
+      "_scopeId": "data-v-13877386",
+      "beforeCreate": [
+        null
+      ],
+      "beforeDestroy": [
+        null
+      ],
+      "__file": "src/layout/index.vue",
+      "_Ctor": {}
+    },
+    "redirect": "/table/complex-table",
+    "name": "Table",
+    "meta": {
+      "title": "Table",
+      "icon": "table"
+    },
+    "children": [
+      {
+        "path": "/table/dynamic-table",
+        "name": "DynamicTable",
+        "meta": {
+          "title": "Dynamic Table"
+        }
+      },
+      {
+        "path": "/table/drag-table",
+        "name": "DragTable",
+        "meta": {
+          "title": "Drag Table"
+        }
+      },
+      {
+        "path": "/table/inline-edit-table",
+        "name": "InlineEditTable",
+        "meta": {
+          "title": "Inline Edit"
+        }
+      },
+      {
+        "path": "/table/complex-table",
+        "name": "ComplexTable",
+        "meta": {
+          "title": "ComplexTable"
+        }
+      },
+      {
+        "path": "/table/user-table",
+        "name": "UserTable",
+        "meta": {
+          "title": "用户监管"
+        }
+      },
+      {
+        "path": "/table/role-table",
+        "name": "RoleTable",
+        "meta": {
+          "title": "角色监管"
+        }
+      },
+      {
+        "path": "/table/rule-table",
+        "name": "RuleTable",
+        "meta": {
+          "title": "权限监控"
+        }
+      },
+      {
+        "path": "/table/test",
+        "name": "test",
+        "meta": {
+          "title": "test"
+        }
+      }
+    ]
+  }
+]

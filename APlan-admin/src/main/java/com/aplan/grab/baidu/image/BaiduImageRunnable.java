@@ -10,16 +10,16 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 import java.util.UUID;
 
-class RunnableDemo implements Runnable {
+class BaiduImageRunnable implements Runnable {
     private Thread t;
     private String threadName;
     private int threadStartPage;
     private int threadEndPage;
 
-    RunnableDemo(String name, int startPage, int endtPage) {
+    BaiduImageRunnable(String name, int startPage, int endPage) {
         threadName = name;
         threadStartPage = startPage;
-        threadEndPage = endtPage;
+        threadEndPage = endPage;
         System.out.println("Creating " + threadName);
     }
 
@@ -34,6 +34,7 @@ class RunnableDemo implements Runnable {
         int ic = BaiduImageColorEnum.BLACKANDWHITE.getColor();//按颜色区分
         long beginTime = SystemClock.now();
         for (int i = threadStartPage; i <= threadEndPage; i++) {
+
             String url = "https://image.baidu.com/search/acjson?" +
                     "tn=resultjson_com&logid=11024440026886552183&ipn=rj&ct=201326592&is=&fp=result&fr=&" +
                     "word=" + urlencodeKewy + "&cg=head&" +
